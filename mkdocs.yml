@@ -1,6 +1,7 @@
 site_name: Podman Desktop Tutorials
 site_description: Hands-on Podman Desktop tutorials for containerised applications on Windows.
 site_author: Ali H.
+site_url: https://ayhaidar.github.io/podman-desktop-tutorials/
 
 docs_dir: docs
 site_dir: site
