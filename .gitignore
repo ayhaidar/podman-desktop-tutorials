@@ -1,0 +1,29 @@
+# Local environment files
+.env
+*.env
+.env.*
+!*.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local generated data
+exports/
+site/
+mkdocs-serve*.log
+*.log
+docs/publishing.md
+PUBLISHING.md
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

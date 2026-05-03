@@ -1,0 +1,30 @@
+services:
+  # Service 1: The Database Puller
+  data-puller:
+    build: ./data-puller
+    container_name: mssql-puller
+    volumes:
+      - shared_data_volume:/var/lib/exports:z # ':z' handles Podman permissions
+    environment:
+      - DB_SERVER
+      - DB_NAME
+      - DB_USER
+      - DB_PASS
+    # Optional: restart every time it finishes a pull (if not using a loop)
+    restart: "no" 
+
+  # Service 2: The Streamlit Dashboard
+  dashboard:
+    build: ./dashboard
+    container_name: streamlit-ui
+    ports:
+      - "8536:8536"
+    volumes:
+      - shared_data_volume:/app/dashboard_data:z # Same volume, different path
+    depends_on:
+      - data-puller
+    restart: always
+
+volumes:
+  shared_data_volume:
+    driver: local

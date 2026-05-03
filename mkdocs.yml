@@ -1,0 +1,65 @@
+site_name: Podman Desktop Tutorials
+site_description: Hands-on Podman Desktop tutorials for containerised applications on Windows.
+site_author: Ali H.
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Tutorials:
+      - Setup Podman Desktop: setup_podman_desktop/index.md
+      - Running a Python Application: simple_streamlit_app/index.md
+      - Multiple Services with Compose: multiple_services/index.md
+      - Podify with Podman Desktop: working_with_pods/index.md
+      - Deploy Pods to Kubernetes: deploy_to_kubernetes/index.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - fenced_code
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 95%
+      height: auto
+      zoomable: true
+      draggable: true
+
+extra_css:
+  - assets/stylesheets/extra.css

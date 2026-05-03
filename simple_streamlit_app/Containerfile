@@ -1,0 +1,25 @@
+# targeted python image to be used
+FROM quay.io/fedora/python-312
+
+LABEL org.opencontainers.image.authors="your-name@example.com"
+
+# copy the requirements file
+COPY requirements.txt requirements.txt
+# add the proxy, not needed it was on a personal computer
+ARG http_proxy=http://username@proxyserver:8080
+ARG https_proxy=http://username@proxyserver:8080
+
+# install the application requirements
+RUN pip3 install -r requirements.txt
+# copy the entire contents of the current project directory on your host machine into the current working directory inside the image
+COPY . .
+# expose the port
+EXPOSE 8535
+# start the application on the port 8535
+CMD ["python3", "-m" , "streamlit", "run", "app.py", "--server.port=8535"]
+
+# WINDOWS EXTERNAL ACCESS NOTE:
+# 1. Map Host Port 8535 to Container Port [YourAppPort] in the Basic tab.
+# 2. Run in Admin PowerShell: wsl -d podman-machine-default ip addr show eth0
+# 3. Get the ip address there, and replace it with replacehere
+# 4. netsh interface portproxy add v4tov4 listenport=8535 listenaddress=0.0.0.0 connectport=8535 connectaddress=replacehere
